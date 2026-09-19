@@ -1,0 +1,121 @@
+generated: '2026-09-19'
+method: probed
+source: live GET of the named /.well-known/ path list on every host this record knows (airwave.us, www.airwave.us, app.airwave.us, web.airwave.us, and the three wvlnth.net backend hosts the app bundle names)
+hit_count: 0
+note: >-
+  No discovery document is served on any host. airwave.us 302s every path to www; www.airwave.us
+  answers every unknown path with a 302 to /404.html (the negative-control path did the same), so
+  these are true absences. app.airwave.us and web.airwave.us are single-page-app shells that answer
+  200 or 404 with the same HTML for every path (58,182 and 3,071 bytes respectively) — those 200s
+  are SPA catch-alls, not documents, and are recorded as misses. The backend API hosts
+  coreapi/mediaapi/messagesapi.wvlnth.net ("Wavelength ... API is up") return 404 for every path.
+  No WellKnown or SecurityTxt pointer is emitted: this file records an absence, not a served surface.
+hosts:
+- host: https://www.airwave.us
+  path_echo_control: passed
+  control: /nonexistent-zzz -> 301 -> 302 /404.html
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+    note: redirects to /404.html
+  - path: /.well-known/openid-configuration
+    status: 302
+    note: 301 to trailing slash, then 302 to /404.html
+  - path: /.well-known/oauth-authorization-server
+    status: 302
+    note: 301 to trailing slash, then 302 to /404.html
+  - path: /.well-known/oauth-protected-resource
+    status: 302
+    note: 301 to trailing slash, then 302 to /404.html
+  - path: /.well-known/api-catalog
+    status: 302
+    note: 301 to trailing slash, then 302 to /404.html
+  - path: /.well-known/ai-plugin.json
+    status: 302
+    note: redirects to /404.html
+  - path: /.well-known/agent-card.json
+    status: 302
+    note: redirects to /404.html
+  - path: /.well-known/agent.json
+    status: 302
+    note: redirects to /404.html
+  - path: /llms.txt
+    status: 302
+    note: redirects to /404.html
+- host: https://airwave.us
+  path_echo_control: passed
+  documents:
+  - path: /.well-known/security.txt
+    status: 302
+    note: apex 302s every path to https://www.airwave.us/
+  - path: /.well-known/openid-configuration
+    status: 302
+  - path: /.well-known/oauth-authorization-server
+    status: 302
+  - path: /.well-known/api-catalog
+    status: 302
+  - path: /.well-known/ai-plugin.json
+    status: 302
+  - path: /.well-known/agent-card.json
+    status: 302
+  - path: /.well-known/agent.json
+    status: 302
+- host: https://app.airwave.us
+  path_echo_control: failed
+  control: /nonexistent-zzz.json -> 404 with the same 58,182-byte SPA shell as /
+  documents:
+  - path: /.well-known/agent-card.json
+    status: 404
+    note: create-react-app shell ("Airwave AI"), not a document
+  - path: /openapi.json
+    status: 404
+    note: SPA shell
+- host: https://web.airwave.us
+  path_echo_control: failed
+  control: every path, known or unknown, returns the same 3,071-byte SPA shell
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 200
+    note: SPA shell (text/html, 3,071 bytes) — NOT a document; treated as a miss
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    note: SPA shell — NOT a document; treated as a miss
+  - path: /.well-known/api-catalog
+    status: 200
+    note: SPA shell — NOT a document; treated as a miss
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+- host: https://coreapi.wvlnth.net
+  path_echo_control: passed
+  note: named as REACT_APP backend in the public app.airwave.us bundle; root answers "Wavelength Core API is up"
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /docs
+    status: 404
+  - path: /swagger.json
+    status: 404
+- host: https://docs.airwave.us
+  path_echo_control: n/a
+  note: S3 bucket answering AccessDenied (403) at the root; the app bundle uses it only for notification audio files, it is not a documentation site
+  documents:
+  - path: /
+    status: 403

@@ -1,0 +1,77 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Airwave
+providerId: airwave
+generated: '2026-09-19'
+method: searched
+source: https://www.airwave.us/pricing.html
+created: '2026-09-19'
+modified: '2026-09-19'
+plan_count: 3
+description: >-
+  Airwave publishes three per-user, annually billed product tiers. These are PRODUCT plans for the
+  smart-glasses / field-reporting platform, not API plans: API integrations (ERP, CRM, CMMS, custom
+  workflows) and the Airwave Glasses SDK are listed only inside the custom-priced Video Intelligence
+  tier behind "Talk to us". No API quota, rate limit or developer tier is published.
+note: >-
+  Prices and inclusions are copied verbatim from the pricing page on 2026-09-19. "All plans billed
+  annually. Mix and match licenses across your team — not everyone needs glasses."
+plans:
+- id: airwave-software
+  name: Airwave
+  type: per-seat
+  price: 75
+  currency: USD
+  billing_period: month
+  billed: annually
+  unit: user
+  description: The full platform. AI answers, reports, job notes, and messaging — no hardware required.
+  includes:
+  - AI Answers — ask Blue anything from your manuals, parts lists, and team knowledge
+  - Report generation — inspection reports, JHAs, customer summaries
+  - Job notes — every job recorded, timestamped, searchable
+  - Team messaging and push-to-talk
+  - Knowledge library — upload manuals, service bulletins, videos
+  - Tribal knowledge capture — index expert fixes from your team
+  - Mobile app (iOS + Android)
+  api_access: false
+- id: airwave-hands-free
+  name: Airwave Hands-Free
+  type: per-seat
+  price: 100
+  currency: USD
+  billing_period: month
+  billed: annually
+  unit: user
+  description: Everything in Airwave, plus smart safety glasses for hands-free operation in the field.
+  includes:
+  - Z87+ smart safety glasses included
+  - Hands-free POV video capture
+  - Voice-to-voice — talk to Blue out loud, answers in your ear
+  - Speak-to-document — narrate observations, Airwave writes them down
+  - Auto-generated reports from footage
+  - Physical record button with visible LED
+  - Auto-wipe after transfer — nothing stays on the glasses
+  - All Airwave software features included
+  api_access: false
+- id: airwave-video-intelligence
+  name: Airwave Video Intelligence
+  type: custom
+  price: null
+  currency: USD
+  billing_period: null
+  description: Custom vision models built for your equipment, your workflows, and your standards. Custom pricing, scoped to your build requirements.
+  contact: https://www.airwave.us/contact.html
+  includes:
+  - Custom vision model trained on your equipment
+  - Real-time voice guidance — step-by-step instructions as you work
+  - Auto error detection — the system flags mistakes before you finish
+  - Visual verification — AI confirms correct parts, correct orientation, correct torque
+  - Dedicated engineering support and model training
+  - Custom integrations and workflow automation
+  - Access to Airwave Glasses SDK
+  - API integrations — ERP, CRM, CMMS, and custom workflows
+  - Volume discounts for enterprise teams
+  api_access: true
+  api_access_note: API integrations and the Glasses SDK are only listed in this sales-gated tier; no public reference exists.

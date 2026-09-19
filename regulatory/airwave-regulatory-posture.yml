@@ -1,0 +1,36 @@
+generated: '2026-09-19'
+method: searched
+probe: true
+source: https://www.airwave.us/
+note: >-
+  Airwave publishes a static marketing site (index, smart glasses, reports, summaries, field notes,
+  customers, pricing, contact, privacy, terms). Every conventional regulatory path probed redirected
+  to /404.html. The only substantive signal is an incident-notification commitment stated in the
+  Terms of Use; the privacy policy states workspace isolation, encryption in transit and at rest,
+  no cross-customer training, and deletion of all content at termination, but names no data-subject
+  request channel, subprocessor list, residency region, accessibility report or SBOM. No prior
+  artifacts (security.txt, trust center, lifecycle, conformance) exist to harvest from. Nothing here
+  infers that any regime applies — that is the regime map's decision.
+probed:
+- {url: https://www.airwave.us/accessibility, status: 302, note: '301 to trailing slash, then 302 to /404.html'}
+- {url: https://www.airwave.us/legal/subprocessors, status: 302, note: '-> /404.html'}
+- {url: https://www.airwave.us/legal/dpa, status: 302, note: '-> /404.html'}
+- {url: https://www.airwave.us/security, status: 302, note: '-> /404.html'}
+- {url: https://www.airwave.us/integrations, status: 302, note: '-> /404.html'}
+- {url: https://www.airwave.us/docs, status: 302, note: '-> /404.html'}
+- {url: https://www.airwave.us/developers, status: 302, note: '-> /404.html'}
+- {url: https://www.airwave.us/.well-known/security.txt, status: 302, note: '-> /404.html'}
+- {url: https://www.airwave.us/privacy.html, status: 200}
+- {url: https://www.airwave.us/terms.html, status: 200}
+- {url: https://www.airwave.us/legal/privacy-policy, status: 200, note: 'alias of privacy.html used by the app bundle'}
+- {url: https://www.airwave.us/legal/terms-of-use, status: 200, note: 'alias of terms.html used by the app bundle'}
+signals:
+  incident_notification:
+    present: true
+    pointer_type: IncidentNotification
+    url: https://www.airwave.us/terms.html
+    section: '5. Security and Incident Notification'
+    stated_sla: 'If there is a confirmed security issue that materially affects your content, we will notify you promptly.'
+    note: >-
+      Verbatim from the Terms of Use (last modified January 12, 2026). "Promptly" is the whole
+      commitment — no hour/day window is stated and none is inferred.

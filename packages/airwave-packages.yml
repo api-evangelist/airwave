@@ -1,0 +1,19 @@
+generated: '2026-09-19'
+method: searched
+source: registry searches (npm, PyPI) plus the airwave.us site and GitHub org-name probes
+package_count: 0
+official_count: 0
+note: >-
+  No first-party client library or SDK is published. npm search for "airwave" returns only
+  unrelated packages (Aruba AirWave adapters, airwave.io tooling); pypi.org/pypi/airwave/json is
+  404; github.com/airwave-us, airwaveus, airwave-ai and airwaveai are all 404. The pricing page
+  names an "Airwave Glasses SDK" available only in the custom-priced Video Intelligence tier
+  behind a sales conversation, so the SDK exists as a gated deliverable, not a published package.
+probed:
+- {url: 'https://registry.npmjs.org/-/v1/search?text=airwave&size=10', status: 200, note: no first-party match}
+- {url: https://pypi.org/pypi/airwave/json, status: 404}
+- {url: https://github.com/airwave-us, status: 404}
+- {url: https://github.com/airwaveus, status: 404}
+- {url: https://github.com/airwave-ai, status: 404}
+- {url: https://github.com/airwaveai, status: 404}
+packages: []

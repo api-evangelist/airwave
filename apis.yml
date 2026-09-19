@@ -1,8 +1,16 @@
 aid: airwave
 name: Airwave
-description: 'Airwave is a company surfaced via the API Evangelist harvest backlog (source: secondary-market)
-  and added to the network as a stub for full-pipeline profiling.'
+description: >-
+  Airwave (Indianapolis, founded 2022) is a field intelligence platform for industrial and
+  field-service technicians: ANSI Z87+ smart safety glasses with a built-in camera,
+  microphone and speakers record the job, and the Airwave software turns the footage into
+  inspection reports, job hazard analyses, customer summaries and searchable job notes, with an
+  AI assistant ("Blue") answering questions from uploaded manuals, parts lists and team
+  knowledge. The pricing page lists API integrations (ERP, CRM, CMMS) and an Airwave Glasses
+  SDK only in the custom-priced Video Intelligence tier behind a sales conversation; no public
+  developer documentation, API reference or machine-readable contract is published.
 url: https://raw.githubusercontent.com/api-evangelist/airwave/refs/heads/main/apis.yml
+image: https://www.airwave.us/images/favicon.png
 x-type: company
 x-source: harvest:secondary-market
 x-tier: stub
@@ -12,6 +20,14 @@ created: '2026-09-19'
 modified: '2026-09-19'
 tags:
 - Company
+- Field Service
+- Smart Glasses
+- Wearables
+- Computer Vision
+- Industrial
+- AI Assistant
+- Inspection Reports
+- Safety
 apis: []
 maintainers:
 - FN: Kin Lane
@@ -19,5 +35,47 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/airwave-domain-security.yml
 - type: Website
-  url: https://www.nasdaqprivatemarket.com/
+  url: https://www.airwave.us/
+- type: Pricing
+  url: https://www.airwave.us/pricing.html
+- type: Support
+  url: https://www.airwave.us/contact.html
+- type: PrivacyPolicy
+  url: https://www.airwave.us/privacy.html
+- type: TermsOfService
+  url: https://www.airwave.us/terms.html
+- type: SecondaryMarket
+  url: https://www.nasdaqprivatemarket.com/company/airwave/
+- type: Plans
+  url: plans/airwave-plans-pricing.yml
+- type: IncidentNotification
+  name: Security and Incident Notification (Terms of Use §5) — harvest record in regulatory/airwave-regulatory-posture.yml
+  url: https://www.airwave.us/terms.html
+x-enrichment:
+  date: '2026-09-19'
+  status: minimal
+  artifacts_added: 5
+  pass: local-v3
+x-coverage:
+  state: gated
+  reason: sales-gate
+  detail: >-
+    The pricing page lists "API integrations — ERP, CRM, CMMS" and "Access to Airwave Glasses SDK"
+    only inside the custom-priced Video Intelligence tier behind a "Talk to us" demo form; the site
+    has no developer, docs or API page (each 302s to /404.html), and the Wavelength backend hosts the
+    public app bundle names (coreapi.wvlnth.net) serve no OpenAPI, docs or discovery document.
+  evidence:
+  - url: https://www.airwave.us/pricing.html
+    status: 200
+  - url: https://www.airwave.us/developers
+    status: 302
+  - url: https://www.airwave.us/docs
+    status: 302
+  - url: https://coreapi.wvlnth.net/openapi.json
+    status: 404
+  - url: https://coreapi.wvlnth.net/docs
+    status: 404
+  checked: '2026-09-19'
