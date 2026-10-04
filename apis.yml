@@ -23,7 +23,7 @@ tags:
 - Field Service
 - Smart Glasses
 - Wearables
-- Computer-Vision
+- Computer Vision
 - Industrial
 - AI Assistant
 - Inspection Reports
@@ -38,6 +38,7 @@ tags_raw:
 - AI Assistant
 - Inspection Reports
 - Safety
+- Computer-Vision
 apis: []
 maintainers:
 - FN: Kin Lane
