@@ -75,3 +75,32 @@ plans:
   - Volume discounts for enterprise teams
   api_access: true
   api_access_note: API integrations and the Glasses SDK are only listed in this sales-gated tier; no public reference exists.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - negotiated
+  - seat
+  units:
+  - seat
+  plans:
+  - name: Airwave
+    access: other
+    model: seat
+    model_how: stated
+    units:
+    - seat
+    periods: []
+  - name: Airwave Hands-Free
+    access: other
+    model: seat
+    model_how: stated
+    units:
+    - seat
+    periods: []
+  - name: Airwave Video Intelligence
+    access: negotiated
+    model: negotiated
+    model_how: stated
+    units: []
+    periods: []
